@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Bootswatch Theme -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.2/yeti/bootstrap.min.css" integrity="sha512-o9NK3edLgKJjQxISJIJFMI2w1yPCyBVK0OffzNAN7j3BNt6am8T5VIq9ZblOFKdhkJhvyLWnOWslPSj1uS4MjQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="icon" sizes="512x512" href="./favicon.png" />
+        <title>Chatbox - Powered by ChatGPT</title>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3585118770961536" crossorigin="anonymous"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KDNS75K5C2"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-KDNS75K5C2');
+        </script>
+        <style>
+            body.waiting {
+                cursor: wait;
+            }
+            #chatbox {
+                min-height: 210px;
+            }
+            p.botTitle {
+                margin-bottom: -30px;
+            }
+            p.answer {
+                white-space: pre-line;
+            }
+        </style>
+    </head>
+    <body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card bg-light shadow-lg rounded">
+                <div class="card-header">
+                    Chatbox - Powered by ChatGPT
+                </div>
+                <div class="card-body" id="chatbox">
+                </div>
+                <div class="card-footer">
+                    <form>
+                        <div class="form-group">
+                        <textarea class="form-control" id="message" rows="5"></textarea>
+                        </div>
+                        <button id="enter" type="submit" class="btn btn-primary">Gửi</button>
+                        <a id="erase" class="btn btn-secondary">Xóa</a>
+                    </form>
+                    <a href="https://cotuong.top/" target="_blank" class="float-right">Cờ tướng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/js/bootstrap.bundle.min.js" integrity="sha512-igl8WEUuas9k5dtnhKqyyld6TzzRjvMqLC79jkgT3z02FvJyHAuUtyemm/P/jYSne1xwFI06ezQxEwweaiV7VA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.0/bootbox.min.js" integrity="sha512-oVbWSv2O4y1UzvExJMHaHcaib4wsBMS5tEP3/YkMP6GmkwRJAa79Jwsv+Y/w7w2Vb/98/Xhvck10LyJweB8Jsw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function sendMessage() {
+        var message = $('#message').val();
+        if (message && message != '') {
+            $('#chatbox').append('<p><u>Tôi:</u></p>');
+            $('#chatbox').append('<p>' + message + '</p>');
+            const botAnswer = setTimeout(() => {
+                $.ajax({
+                    'type': 'POST',
+                    'url': './process.php',
+                    'data': {
+                        'message': message
+                    },
+                    'dataType': 'text'
+                }).done(function(answer){
+                    $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
+                    $('#chatbox').append('<p class="answer">' + answer + '</p>');
+                });
+            }, 200);
+            $('#message').val('');
+        } else {
+            bootbox.alert({
+                message: 'Câu hỏi không hợp lệ!',
+                size: 'small',
+                centerVertical: true,
+                closeButton: false
+            });
+        }
+    }
+    $(document).ready(function() {
+        $('form').submit(function(e) {
+            e.preventDefault();
+            sendMessage();
+        });
+        $('#message').keypress(function(e) {
+            if(e.which == 13) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+        $('#erase').on('click', function(){
+            $('#chatbox').html('');
+        });
+    }).ajaxStart(function(){
+        $('body').addClass('waiting');
+    }).ajaxComplete(function () {
+        $('body').removeClass('waiting');
+    });
+</script>
