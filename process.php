@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-$client = OpenAI::client('YOUR-API-KEY');
+$client = OpenAI::client('YOUR-API-KEY'); // Get your API Key here: https://platform.openai.com/account/api-keys
 
 $result = $client->completions()->create([
     'model' => 'text-davinci-003',
