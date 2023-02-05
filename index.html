@@ -69,7 +69,7 @@
 <script>
     function sendMessage() {
         var message = $('#message').val();
-        if (message && message != '') {
+        if (message && message != '' && !message.includes('<') && !message.includes('>')) {
             $('#chatbox').append('<p><u>Tôi:</u></p>');
             $('#chatbox').append('<p>' + message + '</p>');
             const botAnswer = setTimeout(() => {
