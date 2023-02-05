@@ -124,8 +124,12 @@
                 });
             }).ajaxStart(function(){
                 $('body').addClass('waiting');
+                $('#erase').addClass('disabled');
+                $('textarea#message, #enter').attr('disabled', true);
             }).ajaxComplete(function () {
                 $('body').removeClass('waiting');
+                $('#erase').removeClass('disabled');
+                $('textarea#message, #enter').attr('disabled', false);
             });
         </script>
     </body>
