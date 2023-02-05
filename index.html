@@ -41,78 +41,80 @@
         </style>
     </head>
     <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="card bg-light shadow-lg rounded">
-                <div class="card-header">
-                    <i class="fa-solid fa-comment"></i> Chatbox - Powered by ChatGPT
-                </div>
-                <div class="card-body" id="chatbox">
-                </div>
-                <div class="card-footer">
-                    <form>
-                        <div class="form-group mt-2">
-                            <textarea class="form-control" id="message" rows="5"></textarea>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="card bg-light shadow-lg rounded">
+                        <div class="card-header">
+                            <i class="fa-solid fa-comment"></i> Chatbox - Powered by ChatGPT
                         </div>
-                        <button id="enter" type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Gửi</button>
-                        <a id="erase" class="btn btn-secondary"><i class="fa-solid fa-xmark"></i> Xóa</a>
-                    </form>
-                    <a href="https://cotuong.top/" target="_blank" class="float-right"><i class="fa-solid fa-copyright"></i> Cờ tướng</a>
+                        <div class="card-body" id="chatbox">
+                        </div>
+                        <div class="card-footer">
+                            <form>
+                                <div class="form-group mt-2">
+                                    <textarea class="form-control" id="message" rows="5"></textarea>
+                                </div>
+                                <button id="enter" type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Gửi</button>
+                                <a id="erase" class="btn btn-secondary"><i class="fa-solid fa-xmark"></i> Xóa</a>
+                            </form>
+                            <a href="https://cotuong.top/" target="_blank" class="float-right"><i class="fa-solid fa-copyright"></i> Cờ tướng</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/js/bootstrap.bundle.min.js" integrity="sha512-igl8WEUuas9k5dtnhKqyyld6TzzRjvMqLC79jkgT3z02FvJyHAuUtyemm/P/jYSne1xwFI06ezQxEwweaiV7VA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.0/bootbox.min.js" integrity="sha512-oVbWSv2O4y1UzvExJMHaHcaib4wsBMS5tEP3/YkMP6GmkwRJAa79Jwsv+Y/w7w2Vb/98/Xhvck10LyJweB8Jsw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-    function sendMessage() {
-        var message = $('#message').val();
-        if (message && message != '' && !message.includes('<') && !message.includes('>')) {
-            $('#chatbox').append('<p><u>Tôi:</u></p>');
-            $('#chatbox').append('<p>' + message + '</p>');
-            const botAnswer = setTimeout(() => {
-                $.ajax({
-                    'type': 'POST',
-                    'url': './process.php',
-                    'data': {
-                        'message': message
-                    },
-                    'dataType': 'text'
-                }).done(function(answer){
-                    $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
-                    $('#chatbox').append('<p class="answer">' + answer + '</p>');
-                });
-            }, 200);
-            $('#message').val('');
-        } else {
-            bootbox.alert({
-                message: 'Câu hỏi không hợp lệ!',
-                size: 'small',
-                centerVertical: true,
-                closeButton: false
-            });
-        }
-    }
-    $(document).ready(function() {
-        $('form').submit(function(e) {
-            e.preventDefault();
-            sendMessage();
-        });
-        $('#message').keypress(function(e) {
-            if(e.which == 13) {
-                e.preventDefault();
-                sendMessage();
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/js/bootstrap.bundle.min.js" integrity="sha512-igl8WEUuas9k5dtnhKqyyld6TzzRjvMqLC79jkgT3z02FvJyHAuUtyemm/P/jYSne1xwFI06ezQxEwweaiV7VA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.0/bootbox.min.js" integrity="sha512-oVbWSv2O4y1UzvExJMHaHcaib4wsBMS5tEP3/YkMP6GmkwRJAa79Jwsv+Y/w7w2Vb/98/Xhvck10LyJweB8Jsw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            function sendMessage() {
+                var message = $('#message').val();
+                if (message && message != '' && !message.includes('<') && !message.includes('>')) {
+                    $('#chatbox').append('<p><u>Tôi:</u></p>');
+                    $('#chatbox').append('<p>' + message + '</p>');
+                    const botAnswer = setTimeout(() => {
+                        $.ajax({
+                            'type': 'POST',
+                            'url': './process.php',
+                            'data': {
+                                'message': message
+                            },
+                            'dataType': 'text'
+                        }).done(function(answer){
+                            $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
+                            $('#chatbox').append('<p class="answer">' + answer + '</p>');
+                        });
+                    }, 200);
+                    $('#message').val('');
+                } else {
+                    bootbox.alert({
+                        message: 'Câu hỏi không hợp lệ!',
+                        size: 'small',
+                        centerVertical: true,
+                        closeButton: false
+                    });
+                }
             }
-        });
-        $('#erase').on('click', function(){
-            $('#chatbox').html('');
-        });
-    }).ajaxStart(function(){
-        $('body').addClass('waiting');
-    }).ajaxComplete(function () {
-        $('body').removeClass('waiting');
-    });
-</script>
+            $(document).ready(function() {
+                $('form').submit(function(e) {
+                    e.preventDefault();
+                    sendMessage();
+                });
+                $('#message').keypress(function(e) {
+                    if(e.which == 13) {
+                        e.preventDefault();
+                        sendMessage();
+                    }
+                });
+                $('#erase').on('click', function(){
+                    $('#chatbox').html('');
+                });
+            }).ajaxStart(function(){
+                $('body').addClass('waiting');
+            }).ajaxComplete(function () {
+                $('body').removeClass('waiting');
+            });
+        </script>
+    </body>
+</html>
