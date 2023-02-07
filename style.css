@@ -1,0 +1,104 @@
+body {
+    padding-top: 20px;
+}
+body.waiting, body.waiting * {
+    cursor: wait;
+}
+#chatbox {
+    min-height: 210px;
+    position: relative;
+}
+p.botTitle {
+    margin-bottom: -30px;
+}
+p.answer {
+    white-space: pre-line;
+}
+#credit {
+    margin-top: -15px;
+}
+.waitingIndicator .indicator:nth-child(1){
+    animation: fade 3s ease 0s infinite;
+    -webkit-animation: fade 3s ease 0s infinite;
+    -moz-animation: fade 3s ease 0s infinite;
+}
+
+.waitingIndicator .indicator:nth-child(2){
+    animation: fade 3s ease 250ms infinite;
+    -webkit-animation: fade 3s ease 250ms infinite;
+    -moz-animation: fade 3s ease 250ms infinite;
+}
+
+.waitingIndicator .indicator:nth-child(3){
+    animation: fade 3s ease 500ms infinite;
+    -webkit-animation: fade 3s ease 500ms infinite;
+    -moz-animation: fade 3s ease 500ms infinite;
+}
+
+.waitingIndicator .indicator:nth-child(4){
+    animation: fade 3s ease-in-out 1s infinite;
+    -webkit-animation: fade 3s ease-in-out 1s infinite;
+    -moz-animation: fade 3s ease-in-out 1s infinite;
+}
+
+.waitingIndicator {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+}
+
+.indicator{
+    background-color: #1a1a1a;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 10px;
+    opacity: 0;  
+}
+   
+@keyframes fade {
+    0% { 
+        transform : scale(0.3);
+        opacity: 0; 
+    }
+    50% { 
+        transform : scale(1);
+        opacity: 1; 
+    }
+    100% { 
+        transform : scale(0.3);
+        opacity: 0;
+    }
+}
+   
+@-webkit-keyframes fade {
+    0% { 
+        transform : scale(0.3);
+        opacity: 0; 
+    }
+    50% { 
+        transform : scale(1);
+        opacity: 1; 
+    }
+    100% { 
+        transform : scale(0.3);
+        opacity: 0;
+    }
+}
+   
+@-moz-keyframes fade {
+    0% { 
+        transform : scale(0.3);
+        opacity: 0; 
+    }
+    50% { 
+        transform : scale(1);
+        opacity: 1; 
+    }
+    100% { 
+        transform : scale(0.3);
+        opacity: 0;
+    }
+}
