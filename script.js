@@ -45,6 +45,7 @@ $(document).ready(function() {
     });
     $('#erase').on('click', function(){
         $('#chatbox').html('<div class="waitingIndicator"><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span></div>');
+        $('textarea#message').focus();
     });
     $('[data-toggle="tooltip"]').tooltip();
 }).ajaxStart(function(){
