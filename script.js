@@ -44,7 +44,7 @@ $(document).ready(function() {
         }
     });
     $('#erase').on('click', function(){
-        $('#chatbox').html('');
+        $('#chatbox').html('<div class="waitingIndicator"><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span></div>');
     });
     $('[data-toggle="tooltip"]').tooltip();
 }).ajaxStart(function(){
