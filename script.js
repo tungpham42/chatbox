@@ -46,6 +46,7 @@ $(document).ready(function() {
     $('#erase').on('click', function(){
         $('#chatbox').html('');
     });
+    $('[data-toggle="tooltip"]').tooltip();
 }).ajaxStart(function(){
     $('body').addClass('waiting');
     $('#erase').addClass('disabled');
