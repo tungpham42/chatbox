@@ -33,6 +33,7 @@ function sendMessage() {
     }
 }
 $(document).ready(function() {
+    $('textarea#message').focus();
     $('form').submit(function(e) {
         e.preventDefault();
         sendMessage();
