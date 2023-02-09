@@ -15,7 +15,7 @@ p.answer {
     white-space: pre-line;
 }
 #credit {
-    margin-top: -15px;
+    margin-top: -30px;
     cursor: pointer !important;
 }
 .waitingIndicator .indicator:nth-child(1){
