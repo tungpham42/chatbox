@@ -8,6 +8,10 @@ body.waiting, body.waiting * {
     min-height: 210px;
     position: relative;
 }
+h1 {
+    font-size: 14px !important;
+    display: inline;
+}
 p.botTitle {
     margin-bottom: -30px;
 }
