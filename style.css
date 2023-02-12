@@ -8,12 +8,12 @@ body.waiting, body.waiting * {
     min-height: 210px;
     position: relative;
 }
-h1 {
+h1, h1 + span {
     font-size: 14px !important;
     display: inline;
 }
-@media only screen and (max-width: 437px) {
-    h1 > span {
+@media only screen and (max-width: 368px) {
+    h1 + span {
         display: none;
     }
     .card-header {
