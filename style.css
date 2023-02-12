@@ -12,6 +12,14 @@ h1 {
     font-size: 14px !important;
     display: inline;
 }
+@media only screen and (max-width: 437px) {
+    h1 > span {
+        display: none;
+    }
+    .card-header {
+        text-align: center;
+    }
+}
 p.botTitle {
     margin-bottom: -30px;
 }

@@ -39,7 +39,7 @@
                 <div class="col-md-8 offset-md-2">
                     <div class="card bg-light shadow-lg rounded">
                         <div class="card-header">
-                            <i class="fa-solid fa-comment"></i> <h1>Chatbox - Powered by ChatGPT</h1> <i data-toggle="tooltip" data-placement="bottom" title="Đây là một ứng dụng chat miễn phí với trí thông minh nhân tạo nổi tiếng ChatGPT của OpenAI" class="fa-regular fa-circle-question"></i>
+                            <i class="fa-solid fa-comment"></i> <h1>Chatbox<span> - Powered by ChatGPT</span></h1> <i data-toggle="tooltip" data-placement="bottom" title="Đây là một ứng dụng chat miễn phí với trí thông minh nhân tạo nổi tiếng ChatGPT của OpenAI" class="fa-regular fa-circle-question"></i>
                         </div>
                         <div class="card-body" id="chatbox">
                             <div class="waitingIndicator"><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span></div>
