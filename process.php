@@ -6,7 +6,7 @@ $client = OpenAI::client('YOUR-API-KEY'); // Get your API Key here: https://plat
 $result = $client->completions()->create([
     'model' => 'text-davinci-003',
     'prompt' => $_POST['message'],
-    'max_tokens' => 4000,
+    'max_tokens' => 2000,
     'temperature' => 0,
 ]);
 
