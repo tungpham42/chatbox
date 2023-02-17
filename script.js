@@ -1,20 +1,37 @@
 function sendMessage() {
-    var message = $('#message').val();
+    var message = $('#message').val().replace(/(\r\n|\n|\r)/gm, "");
+    var latestAnswer = $('p.answer:last-child').text().replace(/(\r\n|\n|\r)/gm, "");
     if (message && message != '' && !message.includes('<') && !message.includes('>')) {
         $('#chatbox').append('<p><u>Tôi:</u></p>');
         $('#chatbox').append('<p>' + message + '</p>');
         const botAnswer = setTimeout(() => {
-            $.ajax({
-                'type': 'POST',
-                'url': './process.php',
-                'data': {
-                    'message': message
-                },
-                'dataType': 'text'
-            }).done(function(answer){
-                $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
-                $('#chatbox').append('<p class="answer">' + answer + '</p>');
-            });
+            if (latestAnswer == '') {
+                $.ajax({
+                    'type': 'POST',
+                    'url': './process.php',
+                    'data': {
+                        'message': message
+                    },
+                    'dataType': 'text'
+                }).done(function(answer){
+                    answer.replace(/(\r\n|\n|\r)/gm, "");
+                    $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
+                    $('#chatbox').append('<p class="answer">' + answer + '</p>');
+                });
+            } else {
+                $.ajax({
+                    'type': 'POST',
+                    'url': './process.php',
+                    'data': {
+                        'message': latestAnswer + ' ' + message
+                    },
+                    'dataType': 'text'
+                }).done(function(answer){
+                    answer.replace(/(\r\n|\n|\r)/gm, "");
+                    $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
+                    $('#chatbox').append('<p class="answer">' + answer + '</p>');
+                });
+            }
         }, 200);
         $('#message').val('');
     } else {
@@ -45,7 +62,7 @@ $(document).ready(function() {
         }
     });
     $('#erase').on('click', function(){
-        $('#chatbox').html('<div class="waitingIndicator"><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span></div>');
+        $('#chatbox').html('<div class="waitingIndicator"><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span><span class="indicator"></span></div><div id="theAnswer"></div>');
         $('textarea#message').focus();
     });
     $('[data-toggle="tooltip"]').tooltip();
