@@ -16,7 +16,7 @@ function sendMessage() {
             $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
             $('#chatbox').append('<p class="answer">' + answer + '</p>');
         });
-        $('#message').val('');
+        $('textarea#message').val('');
     } else {
         bootbox.alert({
             message: 'Xin lỗi. Câu hỏi không hợp lệ!',
