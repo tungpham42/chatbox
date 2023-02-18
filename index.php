@@ -47,7 +47,7 @@
                         <div class="card-footer">
                             <form>
                                 <div class="form-group mt-2">
-                                    <textarea class="form-control bg-light text-dark" id="message" rows="5"></textarea>
+                                    <textarea class="form-control bg-light text-dark" id="message" rows="5" tabindex="-1"></textarea>
                                 </div>
                                 <button id="enter" type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Gửi</button>
                                 <a id="erase" class="btn btn-secondary"><i class="fa-solid fa-xmark"></i> Xóa</a>
