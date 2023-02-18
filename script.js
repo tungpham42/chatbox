@@ -5,33 +5,18 @@ function sendMessage() {
         $('#chatbox').append('<p><u>Tôi:</u></p>');
         $('#chatbox').append('<p>' + message + '</p>');
         const botAnswer = setTimeout(() => {
-            if (latestAnswer == '') {
-                $.ajax({
-                    'type': 'POST',
-                    'url': './process.php',
-                    'data': {
-                        'message': message
-                    },
-                    'dataType': 'text'
-                }).done(function(answer){
-                    answer.replace(/(\r\n|\n|\r)/gm, "");
-                    $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
-                    $('#chatbox').append('<p class="answer">' + answer + '</p>');
-                });
-            } else {
-                $.ajax({
-                    'type': 'POST',
-                    'url': './process.php',
-                    'data': {
-                        'message': latestAnswer + ' ' + message
-                    },
-                    'dataType': 'text'
-                }).done(function(answer){
-                    answer.replace(/(\r\n|\n|\r)/gm, "");
-                    $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
-                    $('#chatbox').append('<p class="answer">' + answer + '</p>');
-                });
-            }
+            $.ajax({
+                'type': 'POST',
+                'url': './process.php',
+                'data': {
+                    'message': ((latestAnswer == '') ? message : (latestAnswer + ' ' + message))
+                },
+                'dataType': 'text'
+            }).done(function(answer){
+                answer.replace(/(\r\n|\n|\r)/gm, "");
+                $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
+                $('#chatbox').append('<p class="answer">' + answer + '</p>');
+            });
         }, 200);
         $('#message').val('');
     } else {
