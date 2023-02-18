@@ -4,20 +4,18 @@ function sendMessage() {
     if (message && message != '' && !message.includes('<') && !message.includes('>')) {
         $('#chatbox').append('<p><u>Tôi:</u></p>');
         $('#chatbox').append('<p>' + message + '</p>');
-        const botAnswer = setTimeout(() => {
-            $.ajax({
-                'type': 'POST',
-                'url': './process.php',
-                'data': {
-                    'message': ((latestAnswer == '') ? message : (latestAnswer + ' ' + message))
-                },
-                'dataType': 'text'
-            }).done(function(answer){
-                answer.replace(/(\r\n|\n|\r)/gm, "");
-                $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
-                $('#chatbox').append('<p class="answer">' + answer + '</p>');
-            });
-        }, 200);
+        $.ajax({
+            'type': 'POST',
+            'url': './process.php',
+            'data': {
+                'message': ((latestAnswer == '') ? message : (latestAnswer + ' ' + message))
+            },
+            'dataType': 'text'
+        }).done(function(answer){
+            answer.replace(/(\r\n|\n|\r)/gm, "");
+            $('#chatbox').append('<p class="botTitle"><u>Máy:</u></p>');
+            $('#chatbox').append('<p class="answer">' + answer + '</p>');
+        });
         $('#message').val('');
     } else {
         bootbox.alert({
