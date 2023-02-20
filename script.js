@@ -60,3 +60,4 @@ $(document).ready(function() {
     $('textarea#message, #enter').attr('disabled', false);
     $('textarea#message').focus();
     $('.waitingIndicator').css('display', 'none');
+});
