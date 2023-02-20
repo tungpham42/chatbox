@@ -1,5 +1,5 @@
 function sendMessage() {
-    var message = $('#message').val().replace(/(\r\n|\n|\r)/gm, "");
+    var message = $('textarea#message').val().replace(/(\r\n|\n|\r)/gm, "");
     var latestAnswer = $('p.answer:last-child').text().replace(/(\r\n|\n|\r)/gm, "");
     if (message && message != '' && !message.includes('<') && !message.includes('>')) {
         $('#chatbox').append('<p><u>Tôi:</u></p>');
@@ -38,7 +38,7 @@ $(document).ready(function() {
         e.preventDefault();
         sendMessage();
     });
-    $('#message').keypress(function(e) {
+    $('textarea#message').keypress(function(e) {
         if(e.which == 13) {
             e.preventDefault();
             sendMessage();
@@ -60,4 +60,3 @@ $(document).ready(function() {
     $('textarea#message, #enter').attr('disabled', false);
     $('textarea#message').focus();
     $('.waitingIndicator').css('display', 'none');
-});
