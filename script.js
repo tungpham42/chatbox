@@ -33,6 +33,9 @@ function sendMessage() {
     }
 }
 $(document).ready(function() {
+    $('textarea#message').focus(function(){
+        console.log('Textarea focused');
+    });
     $('textarea#message').focus();
     $('form').submit(function(e) {
         e.preventDefault();
@@ -60,4 +63,6 @@ $(document).ready(function() {
     $('textarea#message, #enter').attr('disabled', false);
     $('textarea#message').focus();
     $('.waitingIndicator').css('display', 'none');
+}).on('hidden.bs.modal','.bootbox', function () {
+    $('textarea#message').focus();
 });
