@@ -37,11 +37,11 @@ $(document).ready(function() {
         console.log('Textarea focused');
     });
     $('textarea#message').focus();
-    $('form').submit(function(e) {
+    $('form').submit(function(e){
         e.preventDefault();
         sendMessage();
     });
-    $('textarea#message').keypress(function(e) {
+    $('textarea#message').keypress(function(e){
         if(e.which == 13) {
             e.preventDefault();
             sendMessage();
@@ -57,12 +57,12 @@ $(document).ready(function() {
     $('#erase').addClass('disabled');
     $('textarea#message, #enter').attr('disabled', true);
     $('.waitingIndicator').css('display', 'block');
-}).ajaxComplete(function () {
+}).ajaxComplete(function(){
     $('body').removeClass('waiting');
     $('#erase').removeClass('disabled');
     $('textarea#message, #enter').attr('disabled', false);
     $('textarea#message').focus();
     $('.waitingIndicator').css('display', 'none');
-}).on('hidden.bs.modal','.bootbox', function () {
+}).on('hidden.bs.modal', '.bootbox', function(){
     $('textarea#message').focus();
 });
