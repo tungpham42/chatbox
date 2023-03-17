@@ -3,14 +3,20 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $client = OpenAI::client('YOUR-API-KEY'); // Get your API Key here: https://platform.openai.com/account/api-keys
 
-$result = $client->completions()->create([
-    'model' => 'text-davinci-003',
-    'prompt' => $_POST['message'],
-    'max_tokens' => 2000,
-    'temperature' => 0,
+$response = $client->chat()->create([
+    'model' => 'gpt-3.5-turbo',
+    'messages' => [
+        ['role' => 'user', 'content' => $question],
+    ],
 ]);
 
-$answer = $result['choices'][0]['text'];
+foreach ($response->choices as $result) {
+    $result->index;
+    $result->message->role;
+    $result->message->content;
+    $result->finishReason;
+    $answer = $result->message->content;
+}
 
 $answer = str_replace("<","&lt;",$answer);
 $answer = str_replace(">","&gt;",$answer);
