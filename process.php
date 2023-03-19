@@ -3,6 +3,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $client = OpenAI::client('YOUR-API-KEY'); // Get your API Key here: https://platform.openai.com/account/api-keys
 
+$question = $_POST['message'];
+
 $response = $client->chat()->create([
     'model' => 'gpt-3.5-turbo-0301',
     'messages' => [
