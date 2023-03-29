@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '3bb198e4dbb4b8e7a1b52eb5043306e14c6d79de',
+        'reference' => '09c735bf6d38d862a896a773d7be9e4524dbbea0',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '3bb198e4dbb4b8e7a1b52eb5043306e14c6d79de',
+            'reference' => '09c735bf6d38d862a896a773d7be9e4524dbbea0',
             'dev_requirement' => false,
         ),
         'nyholm/psr7' => array(
@@ -29,12 +29,12 @@
             'dev_requirement' => false,
         ),
         'openai-php/client' => array(
-            'pretty_version' => 'v0.4.0',
-            'version' => '0.4.0.0',
+            'pretty_version' => 'v0.4.1',
+            'version' => '0.4.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../openai-php/client',
             'aliases' => array(),
-            'reference' => '96bfd288e8a072e76be3e2f4de4c72db5ff91f8b',
+            'reference' => 'b16dbad9ac6507f7d9a3ec365b906f659e50e2b9',
             'dev_requirement' => false,
         ),
         'php-http/async-client-implementation' => array(
